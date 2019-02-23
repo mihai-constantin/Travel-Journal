@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Travel Journal</string>
+    <string name="trip_name">Trip Name</string>
+    <string name="destination">Destination</string>
+    <string name="trip_type">Trip Type</string>
+    <string name="city_break">City break</string>
+    <string name="see_side">Seaside</string>
+    <string name="mountains">Mountains</string>
+    <string name="price_eur">Price(EUR)</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="rating">Rating</string>
+    <string name="data_format">DD/MM/YYYY</string>
+    <string name="save">save</string>
+    <string name="gallery_photo">Gallery Photo</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="select">select</string>
+    <string name="title_activity_navigation_drawer">Travel Journal</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Mihai Constantin</string>
+    <string name="nav_header_subtitle">mihai.constantin98@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
