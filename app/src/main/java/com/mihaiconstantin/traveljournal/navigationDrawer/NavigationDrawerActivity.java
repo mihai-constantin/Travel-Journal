@@ -49,6 +49,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameLayout, new Destinations()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
         }
     }
 
