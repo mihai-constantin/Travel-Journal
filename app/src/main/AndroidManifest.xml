@@ -21,16 +21,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CameraActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".navigationDrawer.NavigationDrawerActivity"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -38,7 +39,9 @@
             android:label="Manage Trip"></activity>
         <activity
             android:name=".recyclerView.RecyclerViewActivity"
-            android:label="Travel Journal"></activity>
+            android:label="Travel Journal">
+
+        </activity>
     </application>
 
 </manifest>

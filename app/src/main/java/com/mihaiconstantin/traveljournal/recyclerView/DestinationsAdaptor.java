@@ -1,5 +1,6 @@
 package com.mihaiconstantin.traveljournal.recyclerView;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,14 +10,24 @@ import android.view.ViewGroup;
 import com.mihaiconstantin.traveljournal.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsViewHolder> {
 
     private List<Destination> mDestinations;
+    private Context context;
 
     public DestinationsAdaptor(List<Destination> mDestinations) {
         this.mDestinations = mDestinations;
+    }
+
+    public DestinationsAdaptor(Context context,
+                               ArrayList<Destination> arrayList) {
+        this.context = context;
+        this.mDestinations = arrayList;
+//        mSelectedItemsIds = new SparseBooleanArray();
+
     }
 
     @NonNull
