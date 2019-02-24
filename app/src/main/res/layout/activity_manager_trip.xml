@@ -128,14 +128,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/data_format"
-                android:textColor="@color/dim_grey" />
+                android:textColor="@color/dim_grey"
+                android:onClick="btnDatePickerOnClick"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/data_format"
-                android:textColor="@color/dim_grey" />
+                android:textColor="@color/dim_grey"
+                android:onClick="btnDatePickerOnClick"/>
 
         </LinearLayout>
 

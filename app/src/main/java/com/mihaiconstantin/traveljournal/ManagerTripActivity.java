@@ -1,8 +1,11 @@
 package com.mihaiconstantin.traveljournal;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.mihaiconstantin.traveljournal.picker.CustomDatePickerFragment;
 
 public class ManagerTripActivity extends AppCompatActivity {
 
@@ -20,5 +23,10 @@ public class ManagerTripActivity extends AppCompatActivity {
     }
 
     public void bntGalleryPhotoOnClick(View view) {
+    }
+
+    public void btnDatePickerOnClick(View view) {
+        DialogFragment newFragment = new CustomDatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "DatePicker");
     }
 }

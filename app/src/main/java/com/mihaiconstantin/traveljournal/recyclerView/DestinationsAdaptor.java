@@ -26,8 +26,6 @@ public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsViewHo
                                ArrayList<Destination> arrayList) {
         this.context = context;
         this.mDestinations = arrayList;
-//        mSelectedItemsIds = new SparseBooleanArray();
-
     }
 
     @NonNull
