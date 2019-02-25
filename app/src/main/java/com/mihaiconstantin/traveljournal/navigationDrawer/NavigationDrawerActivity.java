@@ -13,10 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.mihaiconstantin.traveljournal.ManagerTripActivity;
 import com.mihaiconstantin.traveljournal.R;
 import com.mihaiconstantin.traveljournal.fragments.Destinations;
+import com.mihaiconstantin.traveljournal.fragments.FavouriteFragment;
 import com.mihaiconstantin.traveljournal.recyclerView.RecyclerViewActivity;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -95,7 +98,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameLayout, new Destinations()).commit();
         } else if (id == R.id.nav_favourite) {
-
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayout, new FavouriteFragment()).commit();
         } else if (id == R.id.nav_about_us) {
 
         } else if (id == R.id.nav_contact) {

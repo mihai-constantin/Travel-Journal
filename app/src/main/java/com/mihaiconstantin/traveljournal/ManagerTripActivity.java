@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -125,34 +128,22 @@ public class ManagerTripActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        InputStream stream = null;
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK)
-            try {
-                // recyle unused bitmaps
-                if (mBitmap != null) {
-                    mBitmap.recycle();
-                }
-                stream = getContentResolver().openInputStream(data.getData());
-                mBitmap = BitmapFactory.decodeStream(stream);
-
-//                mImageViewTaken.setImageBitmap(mBitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                {
-                    if (stream != null)
-                        try {
-                            stream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                }
-            }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == Activity.RESULT_OK)
+//            switch (requestCode){
+//                case REQUEST_CODE:
+//                    Uri selectedImage = data.getData();
+//                    try {
+//                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+//                        carImage.setImageBitmap(bitmap);
+//                    } catch (IOException e) {
+//                        Log.i("TAG", "Some exception " + e);
+//                    }
+//                    break;
+//            }
+//    }
 
     public void btnTakePictureOnClick(View view) {
         Intent intent = new Intent();
@@ -169,5 +160,8 @@ public class ManagerTripActivity extends AppCompatActivity {
     public void btnDatePickerOnClick(View view) {
         DialogFragment newFragment = new CustomDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "DatePicker");
+    }
+
+    public void bntTakePictureOnClick(View view) {
     }
 }
