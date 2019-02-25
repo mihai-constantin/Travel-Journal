@@ -35,6 +35,10 @@
         <activity
             android:name=".recyclerView.RecyclerViewActivity"
             android:label="Travel Journal" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

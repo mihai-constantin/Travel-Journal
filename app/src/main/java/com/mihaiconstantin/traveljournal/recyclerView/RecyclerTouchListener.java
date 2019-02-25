@@ -1,7 +1,6 @@
 package com.mihaiconstantin.traveljournal.recyclerView;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -25,29 +24,29 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
             public void onLongPress(MotionEvent e) {
                 View child = recycleView.findChildViewUnder(e.getX(), e.getY());
                 if (child != null && clicklistener != null) {
-                    clicklistener.onLongClick(child);
+                    clicklistener.onLongClick(child, recycleView.getChildAdapterPosition(child));
                 }
             }
         });
     }
 
     @Override
-    public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
         View child = rv.findChildViewUnder(e.getX(), e.getY());
         if (child != null && clicklistener != null && gestureDetector.onTouchEvent(e)) {
-            clicklistener.onClick(child);
+            clicklistener.onClick(child, rv.getChildAdapterPosition(child));
         }
 
         return false;
     }
 
     @Override
-    public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
     }
 
     @Override
-    public void onRequestDisallowInterceptTouchEvent(boolean b) {
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
     }
 }

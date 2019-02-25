@@ -34,9 +34,6 @@ public class ManagerTripActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
 
-    //    private ImageView mImageViewTaken;
-    private Bitmap mBitmap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +43,6 @@ public class ManagerTripActivity extends AppCompatActivity {
     }
 
     private void initView() {
-//        mImageViewTaken = findViewById(R.id.imageview_taken);
 
         if (checkPermissionREAD_EXTERNAL_STORAGE(this)) {
             //main logic or main code
@@ -127,23 +123,6 @@ public class ManagerTripActivity extends AppCompatActivity {
                         grantResults);
         }
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(resultCode == Activity.RESULT_OK)
-//            switch (requestCode){
-//                case REQUEST_CODE:
-//                    Uri selectedImage = data.getData();
-//                    try {
-//                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-//                        carImage.setImageBitmap(bitmap);
-//                    } catch (IOException e) {
-//                        Log.i("TAG", "Some exception " + e);
-//                    }
-//                    break;
-//            }
-//    }
 
     public void btnTakePictureOnClick(View view) {
         Intent intent = new Intent();

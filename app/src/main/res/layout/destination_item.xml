@@ -68,8 +68,7 @@
                 android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_bookmark_border_black_24dp"
-                android:onClick="bookmarkOnClick"/>
+                app:srcCompat="@drawable/ic_bookmark_border_black_24dp" />
 
             <TextView
                 android:id="@+id/rating"

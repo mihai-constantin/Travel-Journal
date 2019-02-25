@@ -26,4 +26,9 @@
     <string name="single_click">Single click</string>
     <string name="sing_in">sign in</string>
     <string name="default_web_client_id2">831253875718-qeedepe4p4s6socpreal7292butpvri3.apps.googleusercontent.com</string>
+    <string name="image_item">Click on bookmark</string>
+    <string name="delete">Delete</string>
+    <string name="copy">Copy</string>
+    <string name="forward">Forward</string>
+    <string name="log_out">Log Out</string>
 </resources>
