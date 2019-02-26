@@ -19,9 +19,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mihaiconstantin.traveljournal.fragments.Destinations;
 import com.mihaiconstantin.traveljournal.picker.CustomDatePickerFragment;
 
 import java.io.FileNotFoundException;
@@ -34,6 +38,10 @@ public class ManagerTripActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
 
+    private EditText mEditTextReceived;
+    private RatingBar mRatingBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,27 @@ public class ManagerTripActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(Destinations.TRIP_TIME);
+        message = " " + message;
+        if (message != null && !message.isEmpty()) {
+            mEditTextReceived = findViewById(R.id.tripNameEditText);
+            mEditTextReceived.setText(message);
+        }
+
+        message = intent.getStringExtra(Destinations.TRIP_DESTINATION);
+        String message1 = intent.getStringExtra(Destinations.TRIP_RATING);
+
+        message = " " + message;
+        if (message != null && !message.isEmpty() && message1 != null && !message1.isEmpty()) {
+            mEditTextReceived = findViewById(R.id.destinationEditText);
+            mEditTextReceived.setText(message);
+
+            mRatingBar = findViewById(R.id.ratingBarTrip);
+            mRatingBar.setRating(Float.parseFloat(message1));
+        }
+
 
         if (checkPermissionREAD_EXTERNAL_STORAGE(this)) {
             //main logic or main code

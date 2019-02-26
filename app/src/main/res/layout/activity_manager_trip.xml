@@ -23,6 +23,7 @@
 
 
         <EditText
+            android:id="@+id/tripNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_info_outline_black_24dp"
@@ -37,6 +38,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/destinationEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_location_on_black_24dp"
@@ -150,6 +152,7 @@
             android:textStyle="bold" />
 
         <RatingBar
+            android:id="@+id/ratingBarTrip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
