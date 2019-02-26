@@ -7,6 +7,8 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mihaiconstantin.traveljournal.R;
 import com.squareup.picasso.Picasso;
@@ -14,21 +16,27 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsViewHolder> {
+public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsAdaptor.DestinationsViewHolder> {
 
     private List<Destination> mDestinations;
     private Context context;
+    private ItemClickListener mClickListener;
 
-    public DestinationsAdaptor(List<Destination> mDestinations) {
-        this.mDestinations = mDestinations;
+    public DestinationsAdaptor(List<Destination> data) {
+        this.mDestinations = data;
     }
 
-    public DestinationsAdaptor(Context context,
-                               ArrayList<Destination> arrayList) {
+    // data is passed into the constructor
+    public DestinationsAdaptor(Context context, List<Destination> data) {
         this.context = context;
-        this.mDestinations = arrayList;
+        this.mDestinations = data;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+    // inflates the row layout from xml when needed
     @NonNull
     @Override
     public DestinationsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -38,6 +46,7 @@ public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsViewHo
         return new DestinationsViewHolder(itemView);
     }
 
+    // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(@NonNull DestinationsViewHolder destinationsViewHolder, int i) {
         Destination currentDestination = mDestinations.get(i);
@@ -46,8 +55,59 @@ public class DestinationsAdaptor extends RecyclerView.Adapter<DestinationsViewHo
         Picasso.get().load(currentDestination.getURI()).into(destinationsViewHolder.getImageView());
     }
 
+    // total number of rows
     @Override
     public int getItemCount() {
         return mDestinations.size();
     }
+
+    public class DestinationsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private TextView mTextViewTimeDestination;
+        private TextView mTextViewDestination;
+        private ImageView mImageView;
+
+        public DestinationsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            mTextViewTimeDestination = itemView.findViewById(R.id.textViewTimeDestination);
+            mTextViewDestination = itemView.findViewById(R.id.textViewDestination);
+            mImageView = itemView.findViewById(R.id.imageView);
+            itemView.setOnClickListener(this);
+        }
+
+        public TextView getTextViewTimeDestination() {
+            return mTextViewTimeDestination;
+        }
+
+        public TextView getTextViewDestination() {
+            return mTextViewDestination;
+        }
+
+        public ImageView getImageView() {
+            return mImageView;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mClickListener != null) {
+                mClickListener.onItemClick(v, getAdapterPosition());
+            }
+        }
+    }
+
+    // convenience method for getting data at click position
+    public Destination getItem(int id) {
+        return mDestinations.get(id);
+    }
+
+    // allows clicks events to be caught
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
 }
+

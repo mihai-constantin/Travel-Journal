@@ -1,31 +1,29 @@
 package com.mihaiconstantin.traveljournal.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mihaiconstantin.traveljournal.ManagerTripActivity;
 import com.mihaiconstantin.traveljournal.R;
-import com.mihaiconstantin.traveljournal.recyclerView.BookmarkClickListener;
 import com.mihaiconstantin.traveljournal.recyclerView.Destination;
 import com.mihaiconstantin.traveljournal.recyclerView.DestinationsAdaptor;
-import com.mihaiconstantin.traveljournal.recyclerView.RecyclerTouchListener;
 
 import java.util.ArrayList;
 
-public class Destinations extends Fragment {
+public class Destinations extends Fragment implements DestinationsAdaptor.ItemClickListener {
 
     private static View view;
     private static RecyclerView recyclerView;
     private static ArrayList<Destination> destinations;
-    private static DestinationsAdaptor adapter;
+    private DestinationsAdaptor adapter;
 
     @Nullable
     @Override
@@ -54,7 +52,14 @@ public class Destinations extends Fragment {
         destinations.add(new Destination("Fall 2018", "Barcelona", "https://i.imgur.com/POLYrIO.jpg"));
 
         adapter = new DestinationsAdaptor(getActivity(), destinations);
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+//        Toast.makeText(adapter.getContext(), adapter.getItem(position).getLocation(), Toast.LENGTH_LONG).show();
+        startActivity(new Intent(adapter.getContext(), ManagerTripActivity.class));
     }
 }
